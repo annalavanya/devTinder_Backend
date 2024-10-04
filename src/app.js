@@ -2,13 +2,16 @@ const express = require("express");
 
 const app = express();
 
-// app.use can handle all the requests like get,post,put,patch,delete etc,..
+// app.use can handle all the http methods like get,post,put,patch,delete etc,..
 // app.use("/user",(req,res)=>{
 //     res.send("Succesfully done");
 // })
 
 // it handle only GET request
-app.get("/user",(req,res)=>{
+app.get("/user/:userId/:name/:password",(req,res)=>{
+    console.log(req.params);
+    // console.log(req.query);
+    console.log(req.url);
     res.send({firstName: "Anna", lastName: "Lavanya"});
 })
 
@@ -32,6 +35,9 @@ app.delete("/user",(req,res)=>{
     res.send("Deleted Successfully");
 })
 
+// app.use("/user",(req,res)=>{
+//     res.send("Succesfully done");
+// })
 
 // app.use("/hello/123", (req,res)=>{
 //     // console.log("req",req.headers.host);
