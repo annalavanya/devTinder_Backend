@@ -2,26 +2,50 @@ const express = require("express");
 
 const app = express();
 
+// error handling
+app.use('/',(err,req,res,next)=>{
+    if (err) {
+        res.status(500).send("Something went wrong!!!");
+    }
+})
+
+app.get('/getUserDetails', (req, res) => {
+    // try {
+        throw new Error("Error happend");
+        res.send("Hello");
+    // }
+    // catch(err) {
+    //     res.status(500).send("Something went wrong");
+    // }
+});
+
+app.use('/',(err,req,res,next)=>{
+    if (err) {
+        res.status(500).send("Something went wrong!!!");
+    }
+})
+
+// middleware
 const { auth } = require('../middlewares/auth');
 const { user } = require('../middlewares/user');
 
-app.get('/admin/getOneUser', auth, (req, res, next) => {
-    res.send("Users send succesfully");
-});
+// app.get('/admin/getOneUser', auth, (req, res, next) => {
+//     res.send("Users send succesfully");
+// });
 
-app.get('/admin/deleteUser', auth, (req,res,next) => {
-    res.send("User removed successfully");
-})
+// app.get('/admin/deleteUser', auth, (req,res,next) => {
+//     res.send("User removed successfully");
+// })
 
-app.get('/user/getDetails', user ,(req,res,next) => {
-    res.send("User details are fetched succesfully");
-})
+// app.get('/user/getDetails', user ,(req,res,next) => {
+//     res.send("User details are fetched succesfully");
+// })
 
-app.get('/user/login',(req,res,next)=>{
-    res.send("Successfully logined");
-})
+// app.get('/user/login',(req,res,next)=>{
+//     res.send("Successfully logined");
+// })
 
-
+// route handler
 // app.use('/user', 
 //     [(req,res,next)=>{
 //         console.log("First Response");
@@ -79,6 +103,13 @@ app.get('/user/login',(req,res,next)=>{
 //         // next();
 //     }
 // );
+
+
+// error handling
+// app.get('/',(req,res)=>{
+//     throw new Error("Oops!!!");
+// })
+
 
 app.listen(7777,()=>{
     console.log("Server is listening in port 7777");
