@@ -43,9 +43,11 @@ app.get('/user', async(req, res) => {
 })
 
 // Feed API GET/ Feed - get all users
-app.get('/feed', async(req,res) => {
+// User.find({condition(optional)}, {projection(include-1/exclude-0 - optional)}, {option(sort- asc= 1,des= -1,limit - optional)}, callback function - optional)
+app.get('/feed', async (req, res) => {
+    const value = req.body.value;
     try {
-        const users = await User.find({});
+        const users = await User.find({},{firstName: 1, lastName: 1, emailId: 1, _id: 0}, {limit: 3, sort: {firstName: -1}});
         res.send(users);
     } catch(error) {
         res.status(500).send("Something went wrong");
@@ -53,6 +55,42 @@ app.get('/feed', async(req,res) => {
 })
 
 // GET - findById
+app.get('/userById', async (req, res) => {
+    const userId = req.body.userId;
+    try {
+        const user = await User.findById(userId, {firstName: 1, lastName: 1, emailId : 1, _id: 0});
+        res.send(user);
+    } catch (error) {
+        res.status(500).send("Something went worng");
+    }
+})
+
+// DELETE API
+app.delete('/user', async (req, res) => {
+    const userId = req.body.userId;
+    try {
+        // await User.findOneAndDelete({_id: userId});  
+                    // (or)
+        await User.findByIdAndDelete(userId);
+        res.send("User deleted succesfully");
+    } catch (error) {
+        res.status(500).send("Something went worng");
+    }
+})
+
+// UPDATE - patch API
+app.patch('/user', async (req,res) => {
+    const userId = req.body.userId;
+    const data = req.body;
+    try {
+        // await User.findOneAndUpdate({_id: userId}, data);  
+                    // (or)
+        await User.findByIdAndUpdate(userId, data);
+        res.send("User Updated succesfully");
+    } catch (error) {
+        res.status(500).send("Something went worng");
+    }
+})
 
 
 connectDB()
