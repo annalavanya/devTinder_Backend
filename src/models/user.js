@@ -46,7 +46,15 @@ const userSchema = new mongoose.Schema({
         maxLength: 100
     },
     skills: {
-        type: [String]
+        type: [String],
+        validate(array) {
+            if(!(array.length === new Set(array).size)) {
+                throw new Error("Duplicate values not allowed")
+            }
+            if(array.length > 10) {
+                throw new Error("Skills length should be less than 10");
+            }
+        }
     }
 }, { timestamps: true });
 // userSchema.index({ age: 1 }); // create index for schema 1- asc, -1- desc, text- search a text, hash- search a unique value and use equality operations only.
