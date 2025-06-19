@@ -39,7 +39,8 @@ const userSchema = new mongoose.Schema({
     },
     age: {
         type: Number,
-        min: 18
+        min: 18,
+        index: true // add index
     },
     gender: {
         type: String,
@@ -73,6 +74,12 @@ const userSchema = new mongoose.Schema({
                 throw new Error("Skills length should be less than 10");
             }
         }
+    },
+    otp: {
+        type: String    
+    },
+    expiryTime: {
+        type: Date
     }
 }, { timestamps: true });
 // userSchema.index({ age: 1 }); // create index for schema 1- asc, -1- desc, text- search a text, hash- search a unique value and use equality operations only.

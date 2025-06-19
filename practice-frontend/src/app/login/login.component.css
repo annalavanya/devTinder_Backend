@@ -1,0 +1,45 @@
+.div {
+    /* border: 2px solid rgb(201, 194, 194); */
+    padding: 30px;
+    width: 400px;
+    height: 540px;
+    margin: 2.5rem auto;
+    background-color:rgb(201, 194, 194);
+}
+input {
+    margin-bottom: 1rem;
+    width: 200px;
+    height: 30px
+}
+
+textarea{
+    margin-bottom: 1rem;
+}
+
+label {
+    color: rgb(1, 10, 1);
+    font-weight: bold;
+}
+
+#buttonstyle {
+    margin-top: 1rem;
+    padding: 5px;
+    height:40px;
+    width: 120px;
+    cursor: pointer;
+    color:cadetblue;
+    font-weight: bold;
+}
+
+h2 {
+    text-align: center;
+    text-transform: uppercase;
+    color:rgb(1, 1, 1);
+    padding-top: 1rem;
+}
+
+.boxwidth {
+    height: 20px;
+    width: 20px;
+}
+  

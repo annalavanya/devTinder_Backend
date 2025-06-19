@@ -3,7 +3,7 @@ const User = require("../models/user");
 const userAuth = async (req, res, next) => {
     try { 
         const cookies = req.cookies;
-        console.log(cookies);
+        // console.log(cookies);
         if (cookies?.token) {
             const { token } = cookies;
             const encodedValue = await jwt.verify(token, 'lavanya@2001');

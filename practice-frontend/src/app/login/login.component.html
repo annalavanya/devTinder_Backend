@@ -1,0 +1,43 @@
+<h2>Welcome to SignUp Page</h2>
+<form (ngSubmit)="onClickToAddData()">
+    <div class="div">
+        <label for="firstname">FIRST NAME: </label>
+        <input type="text" id="firstname" name="firstname" [(ngModel)]="firstName"/><br>
+    
+        <label for="lastname">LAST NAME: </label>
+        <input type="text" id="lastname" name="lastname" [(ngModel)]="lastName"/><br>
+    
+        <label for="emailid">EMAIL ID: </label>
+        <input type="email" id="emailid" name="emailid" [(ngModel)]="emailId"/><br>
+    
+        <label for="password">PASSWORD: </label>
+        <input type="password" id="password" name="password" [(ngModel)]="password"/><br>
+    
+        <label for="age">AGE: </label>
+        <input type="number" id="age" name="age" [(ngModel)]="age"/><br>
+    
+        <label for="gender">GENDER: </label>
+    
+        <input class="boxwidth" type="radio" id="male" name="male" value="male"/>
+        <label for="male">MALE</label>
+    
+        <input class="boxwidth" type="radio" id="female" name="female" value="female"/>
+        <label for="female">FEMALE</label>
+    
+        <input class="boxwidth" type="radio" id="other" name="other" value="others"/>
+        <label for="other">OTHERS</label><br>
+    
+        <label for="photourl">PHOTO: </label>
+        <input type="file" id="photo" accept="image/*">
+        <br>
+        <!-- <img id="preview" src="" alt="Image Preview" width="200"> -->
+    
+        <label for="about">ABOUT: </label>
+        <textarea name="about" rows="3" [(ngModel)]="about"></textarea><br>
+    
+        <label for="skills">SKILLS: </label>
+        <textarea name="skills" rows="3" [(ngModel)]="skills"></textarea><br>
+
+        <button id="buttonstyle">SignUp</button>
+    </div>
+</form>
