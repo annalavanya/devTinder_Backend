@@ -16,7 +16,6 @@ authRouter.post("/signup", async (req, res) => {
         const user = new User({
             firstName, lastName, emailId, password: passwordHash
         });
-        // console.log(user);
         await user.save();
         res.send("User Added succesfully");
     } catch (err) {
@@ -41,7 +40,7 @@ authRouter.post("/login", async (req, res) => {
             // res.cookie('session', 'abc123', { expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000) });
             // 7 days * 24 hours * 60 minutes * 60 seconds * 1000 milliseconds
             res.cookie("token", token, { expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000) });
-            res.send("Login Succesfull!!!");
+            res.status(200).send(user);
         } else {
             throw new Error("Invalid Credentials");
         }

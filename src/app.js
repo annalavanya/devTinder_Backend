@@ -2,16 +2,21 @@ const express = require("express");
 const connectDB = require("./config/database");
 const app = express();
 const cookieParser = require("cookie-parser");
+var cors = require('cors');
+
+// middleware- used to convert JSON into JS object
+app.use(cors({
+  origin: "http://localhost:5173/",
+  credentials: true
+})); // cors
+app.use(express.json());
+app.use(cookieParser()); // parse the cookies
 
 // routes imports
 const authRouter = require("./routes/auth");
 const profileRouter = require("./routes/profile");
 const requestRouter = require("./routes/request");
 const userRouter = require("./routes/user-data");
-
-// middleware- used to convert JSON into JS object
-app.use(express.json());
-app.use(cookieParser()); // parse the cookies
 
 // routes
 app.use("/", authRouter);
